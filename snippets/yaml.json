@@ -1,0 +1,18 @@
+{
+  "Terraform Docs Mini": {
+    "prefix": "tfdocs-mini",
+    "body": [
+      "output:",
+      "   file: \"README.md\"",
+      "   mode: inject",
+      "   template: |-",
+      "       <!-- BEGIN_TF_DOCS -->",
+      "       # $1`",
+      "",
+      "       $0",
+      "",
+      "       {{ .Content }}",
+      "       <!-- END_TF_DOCS -->"
+    ]
+  }
+}

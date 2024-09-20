@@ -1,0 +1,30 @@
+{
+  "Read File": {
+    "prefix": "readfile",
+    "body": [
+        "while IFS= read -r l || [ -n \"${l}\" ]; do",
+        "  echo \"${l}\"",
+        "done < \"${$0}\"}",
+        ""
+    ]
+  },
+  "Shebang": {
+    "prefix": "shebang",
+    "body": [
+        "#!/usr/bin/env sh",
+        "",
+        "set -euf",
+        ""
+    ]
+  },
+  "Multiline String": {
+    "prefix": "multiline-string",
+    "body": [
+        "$1=\"$(cat <<EOF",
+        "$2",
+        "EOF",
+        ")\""
+    ]
+  }
+
+}

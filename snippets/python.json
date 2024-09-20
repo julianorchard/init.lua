@@ -1,0 +1,21 @@
+{
+  "shebang": {
+    "prefix": "shebang",
+    "body": [
+      "#!/usr/bin/env python",
+      "",
+      "$0"
+    ]
+  },
+  "If Name Main": {
+    "prefix": "ifnamemain",
+    "body": [
+      "def main():",
+      "   $0",
+      "",
+      "if __name__ == \"__main__\":",
+      "    main()",
+      ""
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "julian-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./all.json"
+      },
+      {
+        "language": [
+          "terraform",
+          "terragrunt",
+          "hcl"
+        ],
+        "path": "./hcl.json"
+      },
+      {
+        "language": [
+          "sh",
+          "bash"
+        ],
+        "path": "./sh.json"
+      },
+      {
+        "language": [
+          "python"
+        ],
+        "path": "./python.json"
+      },
+      {
+        "language": [
+          "go"
+        ],
+        "path": "./go.json"
+      },
+      {
+        "language": [
+          "json",
+          "jsml"
+        ],
+        "path": "./jsml.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "yaml"
+        ],
+        "path": "./yaml.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./markdown.json"
+      }
+    ]
+  }
+}

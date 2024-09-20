@@ -1,0 +1,58 @@
+{
+  "GitHub Note": {
+    "prefix": "ghnote",
+    "body": [
+      "> [!NOTE]",
+      "> $0"
+    ],
+    "description": "Note snippet for GitHub Markdown"
+  },
+  "GitHub Tip": {
+    "prefix": "ghtip",
+    "body": [
+      "> [!TIP]",
+      "> $0"
+    ],
+    "description": "Tip snippet for GitHub Markdown"
+  },
+  "GitHub Important": {
+    "prefix": "ghimportant",
+    "body": [
+      "> [!IMPORTANT]",
+      "> $0"
+    ],
+    "description": "Important snippet for GitHub Markdown"
+  },
+  "GitHub Warning": {
+    "prefix": "ghwarning",
+    "body": [
+      "> [!WARNING]",
+      "> $0"
+    ],
+    "description": "Warning snippet for GitHub Markdown"
+  },
+  "GitHub Caution": {
+    "prefix": "ghcaution",
+    "body": [
+      "> [!CAUTION]",
+      "> $0"
+    ],
+    "description": "Caution snippet for GitHub Markdown"
+  },
+  "doctoc Marker": {
+    "prefix": "doctoc",
+    "body": [
+      "<!-- START doctoc -->",
+      "<!-- END doctoc -->$0"
+    ],
+    "description": "The doctoc start and end blocks"
+  },
+  "Terraform docs": {
+    "prefix": "tfdocs",
+    "body": [
+      "<!-- BEGIN_TF_DOCS -->",
+      "<!-- END_TF_DOCS -->$0"
+    ],
+    "description": "The Terraform docs start and end block"
+  }
+}

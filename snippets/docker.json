@@ -1,0 +1,14 @@
+{
+  "Hadolint Global": {
+    "prefix": "hadg",
+    "body": [
+        "# hadolint global ignore="
+    ]
+  },
+  "Hadolint Regular": {
+    "prefix": "hado",
+    "body": [
+        "# hadolint ignore="
+    ]
+  }
+}

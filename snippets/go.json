@@ -1,0 +1,21 @@
+{
+  "Err": {
+    "prefix": "err",
+    "body": [
+      "if err != nil {",
+      "\t$0",
+      "}"
+    ],
+    "description": "The most important snippet of the go language"
+  },
+  "Package Main": {
+    "prefix": "pkgm",
+    "body": "package main\n\nfunc main() {\n\t$0\n}",
+    "description": "Snippet for main package & function"
+  },
+  "Switch": {
+    "prefix": "switch",
+    "body": "switch ${1:expression} {\ncase ${2:condition}:\n\t$0\n}",
+    "description": "Snippet for switch statement"
+  }
+}

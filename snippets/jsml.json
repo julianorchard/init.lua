@@ -1,0 +1,11 @@
+{
+  "New Snippet Lang": {
+    "prefix": "newsnip",
+    "body": [
+      "{",
+      "  \"language\": [\"$1\"],",
+      "  \"path\": \"./$0.json\"",
+      "}"
+    ]
+  }
+}
