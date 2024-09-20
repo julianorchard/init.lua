@@ -1,5 +1,7 @@
 # My Neovim Configuration
 
+[![pre-commit](https://github.com/julianorchard/init.lua/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/julianorchard/init.lua/actions/workflows/pre-commit.yml)
+
 This is my neovim configuration which basically is where I live most of the
 time.
 
