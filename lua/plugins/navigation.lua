@@ -70,9 +70,7 @@ return {
       require("cd-project").setup({
         format_json = true,
         project_dir_pattern = { ".git", ".gitignore", "package.json", "go.mod" },
-        projects_config_filepath = vim.fs.normalize(
-          vim.fn.stdpath("config") .. "/projects.json"
-        ),
+        projects_config_filepath = vim.fs.normalize(vim.fn.stdpath("config") .. "/projects.json"),
         projects_picker = "telescope",
         hooks = {
           {

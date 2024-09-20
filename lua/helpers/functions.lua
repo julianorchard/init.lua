@@ -39,12 +39,7 @@ function M.insert_at_point(insert_string)
   local cursor_x = vim.api.nvim_win_get_cursor(0)[2]
   local cursor_y = vim.api.nvim_get_current_line()
   -- Set current line as new content
-  vim.api.nvim_set_current_line(
-    cursor_y:sub(0, cursor_x)
-      .. " "
-      .. insert_string
-      .. cursor_y:sub(cursor_x + 1)
-  )
+  vim.api.nvim_set_current_line(cursor_y:sub(0, cursor_x) .. " " .. insert_string .. cursor_y:sub(cursor_x + 1))
 end
 
 ---Fills line until the first colour column with a character of choice!

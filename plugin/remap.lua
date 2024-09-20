@@ -78,21 +78,11 @@ local function setup_remap()
 
   -- Insert and normal mode are slightly different here
   h.map("i", "<C-t>", "<space><esc>:lua require('helpers.function').fill()<cr>")
-  h.map(
-    "n",
-    "<C-t>",
-    "a<space><esc>:lua require('helpers.function').fill()<cr>"
-  )
+  h.map("n", "<C-t>", "a<space><esc>:lua require('helpers.function').fill()<cr>")
 
   -- Insert timestamp <C-s>
   local tstamp = vim.fn.strftime("%Y-%m-%d %H:%M")
-  h.map(
-    { "i", "n" },
-    "<C-s>",
-    "<esc>:lua require('helpers.function').insert_at_point('"
-      .. tstamp
-      .. "')<cr>A"
-  )
+  h.map({ "i", "n" }, "<C-s>", "<esc>:lua require('helpers.function').insert_at_point('" .. tstamp .. "')<cr>A")
 end
 
 setup_remap()

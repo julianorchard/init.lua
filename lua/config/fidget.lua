@@ -20,15 +20,11 @@ function M.setup()
     notification = {
       -- This took me fucking forever to figure out...
       configs = {
-        default = vim.tbl_extend(
-          "force",
-          require("fidget.notification").default_config,
-          {
-            name = "NOTIFICATION",
-            icon = "<",
-            ttl = 7,
-          }
-        ),
+        default = vim.tbl_extend("force", require("fidget.notification").default_config, {
+          name = "NOTIFICATION",
+          icon = "<",
+          ttl = 7,
+        }),
       },
       -- ^^
       -- Maybe open an issue about this in the GitHub Issues because damn; this

@@ -29,10 +29,7 @@ function M.setup()
     nmap("<leader>gr", require("telescope.builtin").lsp_references)
     nmap("<leader>gI", require("telescope.builtin").lsp_implementations)
     nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols)
-    nmap(
-      "<leader>ws",
-      require("telescope.builtin").lsp_dynamic_workspace_symbols
-    )
+    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
     -- Lesser used LSP functionality
     -- nmap("<C-k>", vim.lsp.buf.signature_help)
