@@ -2,7 +2,24 @@ local M = {}
 
 M.setup = function()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = "all",
+    ensure_installed = {
+      "css",
+      "csv",
+      "groovy",
+      "javascript",
+      "jsonnet",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "ocaml",
+      "scss",
+      "sh",
+      "terraform",
+      "typescript",
+      "vim",
+      "vimdoc",
+      "yaml",
+    },
     auto_install = true,
     additional_vim_regex_highlighting = false,
     highlight = {
