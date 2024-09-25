@@ -3,6 +3,7 @@ local M = {}
 M.setup = function()
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
+      "bash",
       "css",
       "csv",
       "groovy",
@@ -13,7 +14,6 @@ M.setup = function()
       "markdown_inline",
       "ocaml",
       "scss",
-      "sh",
       "terraform",
       "typescript",
       "vim",
