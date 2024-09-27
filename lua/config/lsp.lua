@@ -52,7 +52,7 @@ function M.setup()
     ocamllsp = true,
     pyright = true,
     terraformls = true,
-    tsserver = true,
+    ts_ls = true,
   }
   -- Servers which ARE configured
   local servers = {
@@ -75,7 +75,6 @@ function M.setup()
         -- "standard",
       },
     },
-    tsserver = {},
     jsonls = {
       json = {
         schemas = require("schemastore").json.schemas(),
