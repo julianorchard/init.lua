@@ -55,6 +55,9 @@ local function opts_setup()
       -- Highlight cursor
       cursorline = true,
       cursorcolumn = true,
+
+      -- Conceal
+      conceallevel = 2,
     },
   }
 
