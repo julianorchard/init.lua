@@ -22,7 +22,13 @@ There are many ways to install this but they mainly involve creating a
 
 ### With Ansible
 
-See my Ansible repository for more on this (when it exists)!
+These steps are for Ubuntu:
+
+1. Clone my main [dotfiles](https://github.com/julianorchard/dotfiles)
+   repository
+2. Ensure Ansible is installed
+3. `cd ansible && ./playbook --tags neovim`
+4. Profit?
 
 ### Manually
 
