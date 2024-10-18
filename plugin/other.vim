@@ -1,6 +1,6 @@
 " https://vim.fandom.com/wiki/Increasing_or_decreasing_numbers
 function! AddSubtract(char)
-  let pattern = &nrformats =~ 'alpha' ? '[[:alpha:][:digit:]]' : '[[:digit:]]'
+  let pattern = &nrformats =~# 'alpha' ? '[[:alpha:][:digit:]]' : '[[:digit:]]'
   call search(pattern, 'cw')
   execute 'norm! ' . v:count1 . a:char
 endfunction
