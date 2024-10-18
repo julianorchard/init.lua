@@ -2,7 +2,7 @@
 local M = {
   {
     "j-hui/fidget.nvim",
-    tag = "v1.4.5",
+    tag = "v2.4.5",
     config = function()
       require("config.fidget").setup()
     end,
@@ -11,7 +11,7 @@ local M = {
 
 -- Theme map
 local T = {}
-local current_theme = "nightfox"
+local current_theme = "meh"
 
 local function bg_nullify(selector)
   vim.api.nvim_set_hl(0, selector, {
@@ -105,8 +105,9 @@ local function set_theme()
   elseif current_theme == "rose-pine" then
     table.insert(M, T.rosepine)
   else
-    -- Not really tested this stuff yet
-    vim.cmd("source /home/julian/.config/nvim/theme.vim")
+    vim.cmd([[
+      execute "source " . stdpath("config") . "/colors/murphme.vim"
+    ]])
     return {}
   end
 end
