@@ -56,8 +56,8 @@ local function opts_setup()
       cursorline = true,
       cursorcolumn = true,
 
-      -- Conceal
-      conceallevel = 2,
+      -- Global conceal level
+      -- conceallevel = 2,
     },
   }
 
@@ -67,6 +67,8 @@ local function opts_setup()
       vim[k1][k2] = v2
     end
   end
+
+  vim.g.custom_conceal = true
 end
 
 opts_setup()
