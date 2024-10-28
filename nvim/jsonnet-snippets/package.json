@@ -1,0 +1,8 @@
+{
+   "file": "test-file.json",
+   "language": [
+      "terraform",
+      "terragrunt",
+      "hcl"
+   ]
+}

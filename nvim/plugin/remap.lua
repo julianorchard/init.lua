@@ -83,6 +83,57 @@ local function setup_remap()
   -- Insert timestamp <C-s>
   local tstamp = vim.fn.strftime("%Y-%m-%d %H:%M")
   h.map({ "i", "n" }, "<C-s>", "<esc>:lua require('helpers.function').insert_at_point('" .. tstamp .. "')<cr>A")
+
+  -- Oil
+  require("oil").setup({
+    default_file_explorer = true,
+    view_options = {
+      show_hidden = true,
+    },
+    keymaps = {
+      ["q"] = "actions.close",
+    },
+  })
+  h.map("n", "-", "<cmd>Oil<cr>")
+  h.map("n", "<leader>=", "<cmd>Oil --float<cr>")
+  h.map("n", "<leader><cr>", function()
+    vim.cmd([[
+      vsplit
+      vertical resize 30
+      Oil
+    ]])
+    vim.keymap.del("n", "<leader><cr>")
+    -- This is a useful one
+    vim.api.nvim_input("<cr>")
+    vim.cmd("only")
+  end)
+
+  -- cd-project
+  -- require("cd-project").setup({
+  --   format_json = true,
+  --   project_dir_pattern = { ".git", ".gitignore", "package.json", "go.mod" },
+  --   projects_config_filepath = vim.fs.normalize(vim.fn.stdpath("config") .. "/projects.json"),
+  --   projects_picker = "telescope",
+  --   hooks = {
+  --     {
+  --       callback = function(dir)
+  --         vim.notify("switched to dir: " .. dir)
+  --       end,
+  --     },
+  --     {
+  --       callback = function(_)
+  --         vim.cmd("Oil")
+  --       end,
+  --     },
+  --     {
+  --       callback = function(_)
+  --         local t = require("telescope.builtin").find_files
+  --         require("config.scope").scope(t)
+  --       end,
+  --     },
+  --   },
+  --   auto_register_project = true,
+  -- })
 end
 
 setup_remap()

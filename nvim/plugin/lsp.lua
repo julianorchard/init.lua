@@ -1,4 +1,8 @@
 local icons = require("helpers.icons")
+local helpers_available, h = pcall(require, "helpers.functions")
+if not helpers_available then
+  return nil
+end
 
 local M = {}
 
@@ -10,35 +14,28 @@ function M.setup()
   vim.keymap.set("n", "<leader>gl", vim.diagnostic.setloclist)
 
   local on_attach = function(_, bufnr)
-    -- TODO: Figure this out
-    -- require("virtualtypes").on_attach()
-    local nmap = function(keys, func, desc)
-      if desc then
-        desc = "LSP: " .. desc
-      end
-      vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-    end
+    local opts = { buffer = bufnr }
 
     -- Most useful (but I don't often get to use them)
-    nmap("<leader>gc", vim.lsp.buf.rename)
-    nmap("<leader>gd", vim.lsp.buf.definition)
-    nmap("<leader>D", vim.lsp.buf.type_definition)
-    nmap("<leader>K", vim.lsp.buf.hover)
+    h.map("n", "<leader>gc", vim.lsp.buf.rename, opts)
+    h.map("n", "<leader>gd", vim.lsp.buf.definition, opts)
+    h.map("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+    h.map("n", "<leader>K", vim.lsp.buf.hover, opts)
 
-    nmap("<leader>ga", vim.lsp.buf.code_action)
-    nmap("<leader>gr", require("telescope.builtin").lsp_references)
-    nmap("<leader>gI", require("telescope.builtin").lsp_implementations)
-    nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols)
-    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+    h.map("n", "<leader>ga", vim.lsp.buf.code_action, opts)
+    h.map("n", "<leader>gr", require("telescope.builtin").lsp_references, opts)
+    h.map("n", "<leader>gI", require("telescope.builtin").lsp_implementations, opts)
+    h.map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, opts)
+    h.map("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
 
     -- Lesser used LSP functionality
-    -- nmap("<C-k>", vim.lsp.buf.signature_help)
-    nmap("gD", vim.lsp.buf.declaration)
-    nmap("<leader>wa", vim.lsp.buf.add_workspace_folder)
-    nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder)
-    nmap("<leader>wl", function()
+    -- h.map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    h.map("n", "gD", vim.lsp.buf.declaration, opts)
+    h.map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+    h.map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    h.map("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end)
+    end, opts)
   end
 
   -- Servers which don't need any configuring here
@@ -52,7 +49,6 @@ function M.setup()
     ocamllsp = true,
     pyright = true,
     terraformls = true,
-    ts_ls = true,
   }
   -- Servers which ARE configured
   local servers = {
@@ -123,6 +119,7 @@ function M.setup()
         telemetry = { enable = false },
       },
     },
+    ts_ls = {},
   }
   for k, v in pairs(unconfigured) do
     if v == true then
@@ -132,29 +129,10 @@ function M.setup()
 
   -- Enable the following language servers
 
+  -- NOTE: We're using :link.cmp now though
   -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-  -- Ensure the servers above are installed
-  local mason_lspconfig = require("mason-lspconfig")
-  mason_lspconfig.setup({
-    ensure_installed = vim.tbl_keys(servers),
-  })
-  mason_lspconfig.setup_handlers({
-    function(server_name)
-      -- https://github.com/neovim/nvim-lspconfig/pull/3232
-      if server_name == "tsserver" then
-        server_name = "ts_ls"
-      end
-      require("lspconfig")[server_name].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      })
-    end,
-  })
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
   -- Custom signs
   local signs = icons.diagnostics
@@ -175,14 +153,6 @@ function M.setup()
     -- NOTE: This is depreciated
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
-
-  vim.filetype.add({
-    extension = {
-      jenkins = "groovy",
-    },
-  })
 end
 
 M.setup()
-
-return M

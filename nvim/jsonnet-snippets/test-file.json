@@ -1,0 +1,11 @@
+{
+   "test": {
+      "body": [
+         "Hello",
+         "",
+         "world$0",
+         ""
+      ],
+      "prefix": "test"
+   }
+}

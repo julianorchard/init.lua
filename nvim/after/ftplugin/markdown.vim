@@ -5,7 +5,7 @@ set softtabstop=2
 
 set spell
 
-if has('EasyAlign')
+if exists(':EasyAlign')
 " <leader>\ to align a table!
   vn <leader><Bslash> :EasyAlign*<Bar><Enter>
 en

@@ -63,10 +63,10 @@ local M = {
 }
 
 M.config = function()
-  require("config.lsp").setup()
   require("config.cmp").setup()
   require("config.fmt").setup()
   require("config.lint").setup()
+  require("config.lsp").setup()
 end
 
 return M

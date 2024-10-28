@@ -63,11 +63,20 @@ end
 ---@param mode string|table Which mode(s) the map should be set in
 ---@param lhs string The lhs part of the remap
 ---@param rhs string|function The rhs part of the remap
-function M.map(mode, lhs, rhs)
-  vim.keymap.set(mode, lhs, rhs, {
-    noremap = true,
-    silent = true,
-  })
+---@param opts? table Additional table of options (default {})
+function M.map(mode, lhs, rhs, opts)
+  if opts then
+    opts = vim.tbl_extend("error", {
+      noremap = true,
+      silent = true,
+    }, opts)
+  else
+    opts = {
+      noremap = true,
+      silent = true,
+    }
+  end
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 return M
