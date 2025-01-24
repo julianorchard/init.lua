@@ -2,16 +2,24 @@
 local M = {
   {
     "j-hui/fidget.nvim",
-    tag = "v2.4.5",
+    tag = "v1.5.0",
     config = function()
       require("config.fidget").setup()
+    end,
+  },
+  {
+    "nullromo/go-up.nvim",
+    opts = {},
+    config = function(_, opts)
+      local goUp = require("go-up")
+      goUp.setup(opts)
     end,
   },
 }
 
 -- Theme map
 local T = {}
-local current_theme = "meh"
+local current_theme = vim.g.theme
 
 local function bg_nullify(selector)
   vim.api.nvim_set_hl(0, selector, {
@@ -34,6 +42,16 @@ local function colour_my_pencils(pencils)
     bg_nullify(elm)
   end
 end
+
+T.vague = {
+  "vague2k/vague.nvim",
+  config = function()
+    require("vague").setup({
+      transparent = true,
+    })
+    vim.cmd.colorscheme("vague")
+  end,
+}
 
 T.nightfox = {
   "EdenEast/nightfox.nvim",
@@ -104,6 +122,8 @@ local function set_theme()
     table.insert(M, T.nightfox)
   elseif current_theme == "rose-pine" then
     table.insert(M, T.rosepine)
+  elseif current_theme == "vague" then
+    table.insert(M, T.vague)
   else
     vim.cmd([[
       execute "source " . stdpath("config") . "/colors/murphme.vim"

@@ -1,6 +1,23 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.theme = "vague"
+vim.g.mason_autoinstall = false -- Does not use "mason" or "mason tool installer" to install stuff automagically
+vim.g.dependencies = {
+  -- Formatters
+  "black",
+  "jq",
+  "jsonnetfmt",
+  "prettier",
+  "shfmt",
+  "stylua",
+  "yamlfix",
+  -- Linters
+  "hadolint",
+  "ansible-lint",
+  "phpstan",
+}
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"

@@ -41,21 +41,12 @@ local M = {
         "mfussenegger/nvim-lint",
       },
       config = function()
+        local install_list = {}
+        if vim.g.mason_autoinstall == true then
+          install_list = vim.g.dependencies
+        end
         require("mason-tool-installer").setup({
-          ensure_installed = {
-            -- formatters
-            "black",
-            "jq",
-            "jsonnetfmt",
-            "prettier",
-            "shfmt",
-            "stylua",
-            "yamlfix",
-            -- linters
-            "hadolint",
-            "ansible-lint",
-            "phpstan",
-          },
+          ensure_installed = install_list,
         })
       end,
     },

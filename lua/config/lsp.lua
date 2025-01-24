@@ -138,8 +138,12 @@ function M.setup()
 
   -- Ensure the servers above are installed
   local mason_lspconfig = require("mason-lspconfig")
+  local install_list = {}
+  if vim.g.mason_autoinstall == true then
+    install_list = vim.tbl_keys(servers)
+  end
   mason_lspconfig.setup({
-    ensure_installed = vim.tbl_keys(servers),
+    ensure_installed = install_list,
   })
   mason_lspconfig.setup_handlers({
     function(server_name)

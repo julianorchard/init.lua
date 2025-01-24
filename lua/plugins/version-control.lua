@@ -45,6 +45,8 @@ return {
       fugimap("n", "<leader>gd", "diff")
       fugimap("n", "<leader>gl", "log")
       fugimap("n", "<leader>gs", "status")
+      fugimap("n", "<leader>ga", "add .")
+      fugimap("n", "<leader>gp", "push")
     end,
   },
 
