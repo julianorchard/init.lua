@@ -1,5 +1,10 @@
+vim.loader.enable()
+vim.lsp.set_log_level("off")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+vim.g.mkdp_theme = "light"
 
 vim.g.theme = "vague"
 vim.g.mason_autoinstall = false -- Does not use "mason" or "mason tool installer" to install stuff automagically
