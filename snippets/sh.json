@@ -2,29 +2,34 @@
   "Read File": {
     "prefix": "readfile",
     "body": [
-        "while IFS= read -r l || [ -n \"${l}\" ]; do",
-        "  echo \"${l}\"",
-        "done < \"${$0}\"}",
-        ""
+      "while IFS= read -r l || [ -n \"${l}\" ]; do",
+      "  echo \"${l}\"",
+      "done < \"${$0}\"}",
+      ""
     ]
   },
   "Shebang": {
     "prefix": "shebang",
     "body": [
-        "#!/usr/bin/env sh",
-        "",
-        "set -euf",
-        ""
+      "#!/usr/bin/env sh",
+      "",
+      "set -euf",
+      ""
+    ]
+  },
+  "DevNull Redirect": {
+    "prefix": "devnull",
+    "body": [
+      ">/dev/null 2>&1"
     ]
   },
   "Multiline String": {
     "prefix": "multiline-string",
     "body": [
-        "$1=\"$(cat <<EOF",
-        "$2",
-        "EOF",
-        ")\""
+      "$1=\"$(cat <<EOF",
+      "$2",
+      "EOF",
+      ")\""
     ]
   }
-
 }
