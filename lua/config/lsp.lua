@@ -1,4 +1,5 @@
-local cmp = require("cmp_nvim_lsp")
+-- local cmp = require("cmp_nvim_lsp")
+local cmp = require("blink.cmp")
 local icons = require("helpers.icons")
 local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
@@ -14,9 +15,6 @@ function M.setup()
   vim.keymap.set("n", "<leader>gl", vim.diagnostic.setloclist)
 
   local on_attach = function(_, bufnr)
-    -- TODO: Figure this out
-    -- require("virtualtypes").on_attach()
-
     -- Most useful (but I don't often get to use them)
     vim.keymap.set("n", "<leader>gc", vim.lsp.buf.rename, { buffer = bufnr })
     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
@@ -39,10 +37,9 @@ function M.setup()
     end, { buffer = bufnr })
   end
 
-  -- Server capabilities!
-  -- TODO: Replace with Blink.CMP
+  -- Server capabilities: keeping this stuff for now
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = cmp.default_capabilities(capabilities)
+  capabilities = cmp.get_lsp_capabilities()
 
   local config_path = vim.fn.stdpath("config") .. "/lua/servers"
   local files = vim.fn.globpath(config_path, "*.lua", false, true)

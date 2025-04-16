@@ -17,18 +17,56 @@ local M = {
       ft = "helm",
     },
 
-    -- config.cmp
+    -- TODO: Split this stuff up
     {
-      "hrsh7th/nvim-cmp",
+      "saghen/blink.cmp",
       dependencies = {
-        "L3MON4D3/LuaSnip",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-path",
-        "lukas-reineke/cmp-rg",
-        "nvim-orgmode/orgmode",
         "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip",
+        "moyiz/blink-emoji.nvim",
+        "mikavilpas/blink-ripgrep.nvim",
       },
+      version = "1.*",
+      opts = {
+        keymap = {
+          ["<c-k>"] = { "select_prev", "fallback" },
+          ["<up>"] = { "select_prev", "fallback" },
+          ["<c-j>"] = { "select_next", "fallback" },
+          ["<down>"] = { "select_next", "fallback" },
+          ["<cr>"] = {
+            "snippet_forward",
+            "accept",
+            "fallback",
+          },
+        },
+        appearance = {
+          nerd_font_variant = "mono",
+        },
+        completion = {
+          documentation = {
+            auto_show = true,
+          },
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer", "ripgrep", "emoji" },
+          providers = {
+            ripgrep = {
+              module = "blink-ripgrep",
+              name = "Ripgrep",
+              opts = {},
+            },
+            emoji = {
+              module = "blink-emoji",
+              name = "Emoji",
+              score_offset = 0,
+              opts = {
+                insert = true,
+              },
+            },
+          },
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
+      },
+      opts_extend = { "sources.default" },
     },
 
     -- config.fmt
@@ -55,7 +93,6 @@ local M = {
 
 M.config = function()
   require("config.lsp").setup()
-  require("config.cmp").setup()
   require("config.fmt").setup()
   require("config.lint").setup()
 end
