@@ -69,6 +69,7 @@ local function opts_setup()
   end
 
   vim.g.custom_conceal = true
+  vim.opt.path:append("**")
 end
 
 opts_setup()

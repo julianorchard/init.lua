@@ -1,9 +1,9 @@
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+setlocal nowrap
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
 
-set spell
+setlocal spell
 
 if has('EasyAlign')
 " <leader>\ to align a table!

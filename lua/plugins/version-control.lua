@@ -19,6 +19,7 @@ return {
   {
     "NeogitOrg/neogit",
     config = true,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
@@ -40,6 +41,7 @@ return {
 
   {
     "tpope/vim-fugitive",
+    cmd = "Git",
     init = function()
       fugimap("n", "<leader>gb", "blame")
       fugimap("n", "<leader>gd", "diff")
@@ -52,6 +54,7 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
     opts = {
       signs = {
         add = { text = "+" },
@@ -65,6 +68,7 @@ return {
 
   {
     "ngemily/vim-vp4",
+    event = "VeryLazy",
     init = function()
       p4map("n", "<leader>4c", "Change")
       p4map("n", "<leader>4d", "Describe")

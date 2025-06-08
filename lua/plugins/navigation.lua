@@ -3,6 +3,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    event = "VeryLazy",
     config = function()
       require("config.scope").setup()
     end,
@@ -22,7 +23,9 @@ return {
     "stevearc/oil.nvim",
     opts = {
       default_file_explorer = true,
-      show_hidden = true,
+      view_options = {
+        show_hidden = true,
+      },
       keymaps = {
         ["q"] = "actions.close",
       },
@@ -58,9 +61,7 @@ return {
   },
 
   {
-    "cd-project.nvim",
-    dev = true,
-    branch = "add-json-formatting",
+    "LintaoAmons/cd-project.nvim",
     lazy = false,
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -98,6 +99,25 @@ return {
         "<leader>cd",
         "<cmd>CdProject<cr>",
       },
+    },
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    config = function()
+      vim.g.tmux_navigator_no_mappings = 0
+    end,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+    },
+    keys = {
+      { "<C-a>h", "<CMD>TmuxNavigateLeft<CR>" },
+      { "<C-a>j", "<CMD>TmuxNavigateDown<CR>" },
+      { "<C-a>k", "<CMD>TmuxNavigateUp<CR>" },
+      { "<C-a>l", "<CMD>TmuxNavigateRight<CR>" },
     },
   },
 }

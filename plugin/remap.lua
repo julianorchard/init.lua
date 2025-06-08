@@ -50,9 +50,6 @@ local function setup_remap()
   h.map("n", "C", '"_C')
   h.map("n", "cc", '"_cc')
 
-  -- Terminal (return to normal mode on <esc>)
-  h.map("t", "<esc>", "<C-n><C-\\>")
-
   h.map("v", "<leader>ea", [[ <CMD>EasyAlign<CR> ]])
 
   -- noremap <expr> <LocalLeader>e ':e ' . expand("%:h") . '/'
@@ -65,12 +62,6 @@ local function setup_remap()
   iab @@ hello@julianorchard.co.uk
   iab <expr> ~g substitute(system(gcfg . 'user.name') . " <" . system(gcfg . 'user.email') . ">", '\n', '', 'g')
 ]])
-
-  -- Split navigation
-  h.map("n", "<C-j>", "<C-w><C-j>")
-  h.map("n", "<C-k>", "<C-w><C-k>") -- I think this one's busted
-  h.map("n", "<C-l>", "<C-w><C-l>")
-  h.map("n", "<C-h>", "<C-w><C-h>")
 
   -- Source current file
   h.map("n", "<leader>x", "<cmd>.lua<CR>")

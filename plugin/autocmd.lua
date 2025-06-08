@@ -85,6 +85,26 @@ local function setup_autocmd()
     group = highlight_group,
     pattern = "*",
   })
+
+  -- Show cursor line only in active window (stolen from @folke)
+  vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+    callback = function()
+      if vim.w.auto_cursorline then
+        vim.wo.cursorline = true
+        vim.wo.cursorcolumn = true
+        vim.w.auto_cursorline = nil
+      end
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+    callback = function()
+      if vim.wo.cursorline then
+        vim.w.auto_cursorline = true
+        vim.wo.cursorcolumn = false
+        vim.wo.cursorline = false
+      end
+    end,
+  })
 end
 
 setup_autocmd()
