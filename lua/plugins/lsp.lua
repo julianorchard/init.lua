@@ -4,17 +4,28 @@ local M = {
   dependencies = {
     "HiPhish/jinja.vim",
     {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
+      version = "1.11.0",
       config = true,
       lazy = false,
       priority = 1000,
     },
-    "williamboman/mason-lspconfig.nvim",
+    {
+      "mason-org/mason-lspconfig.nvim",
+      version = "1.32.0",
+    },
     "b0o/SchemaStore.nvim",
     "jubnzv/virtual-types.nvim",
     {
       "towolf/vim-helm",
       ft = "helm",
+    },
+
+    {
+      "TheLeoP/powershell.nvim",
+      opts = {
+        bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+      },
     },
 
     -- TODO: Split this stuff up

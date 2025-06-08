@@ -1,1 +1,1 @@
-"set rtp^="/home/julian/.opam/default/share/ocp-indent/vim"
+"setlocal rtp^="/home/julian/.opam/default/share/ocp-indent/vim"

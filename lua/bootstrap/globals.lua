@@ -1,11 +1,11 @@
+-- Le leader keys
 vim.g.mapleader = " "
-
 vim.g.maplocalleader = " "
 
-vim.g.mkdp_theme = "light"
-
+-- Le theme
 vim.g.theme = "vague"
 
+-- Automatically install Mason packages
 vim.g.mason_autoinstall = false
 
 local formatters = {
@@ -23,4 +23,12 @@ local linters = {
   "ansible-lint",
 }
 
+-- All dependencies as a big list
 vim.g.dependencies = vim.list_extend(formatters, linters)
+
+-- Does the machine have a dev plugin configuration directory?
+vim.g.is_dev = false
+
+-- Auto open the terminal for debugs
+vim.g.terminal_debug = false
+vim.g.terminal_auto_open = false

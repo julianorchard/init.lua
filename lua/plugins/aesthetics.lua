@@ -9,11 +9,28 @@ local M = {
   },
   {
     "nullromo/go-up.nvim",
+    event = "VeryLazy",
     opts = {},
     config = function(_, opts)
       local goUp = require("go-up")
       goUp.setup(opts)
     end,
+  },
+  {
+    "fei6409/log-highlight.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      -- Input QOL (my main reason for wanting this)
+      input = { enabled = true },
+      -- File related QOLs
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+    },
   },
 }
 
