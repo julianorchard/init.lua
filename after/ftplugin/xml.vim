@@ -1,6 +1,6 @@
-set colorcolumn=
+setlocal colorcolumn=
 
-set noexpandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+setlocal noexpandtab
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4

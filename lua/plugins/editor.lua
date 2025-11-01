@@ -7,14 +7,25 @@ local function center_comment_any()
 end
 
 return {
-  "chaoren/vim-wordmotion",
-  "mg979/vim-visual-multi",
-  "tpope/vim-surround",
+  {
+    "chaoren/vim-wordmotion",
+    event = "VeryLazy",
+  },
+
+  {
+    "mg979/vim-visual-multi",
+    event = "VeryLazy",
+  },
+
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy",
+  },
 
   {
     "julianorchard/center-comment.vim",
     name = "center-comment.vim",
-    dev = true,
+    dev = vim.g.is_dev,
     keys = {
       { "<leader>cc", center_comment_any },
     },
@@ -36,6 +47,7 @@ return {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
     init = function()
+      vim.g.mkdp_theme = "light"
       vim.g.mkdp_filetypes = {
         "markdown",
       }
@@ -94,7 +106,6 @@ return {
 
   {
     "junegunn/vim-easy-align",
-    lazy = false,
     init = function()
       local vis = { "v", "x" }
       local prefix = "<leader>a"
@@ -103,30 +114,6 @@ return {
       vim.keymap.set(vis, prefix .. "a", "<cmd>'<,'>EasyAlign<cr>")
       vim.keymap.set(vis, prefix .. "|", "<cmd>'<,'>EasyAlign<cr>")
     end,
-  },
-
-  {
-    "laytan/cloak.nvim",
-    lazy = false,
-    config = function()
-      require("cloak").setup({
-        cloak_length = 16,
-        cloak_on_leave = true,
-        patterns = {
-          {
-            file_pattern = { "*.env", ".env", ".env.*" },
-            cloak_pattern = "=.+",
-            replace = nil,
-          },
-        },
-      })
-    end,
-    keys = {
-      {
-        "<leader>h",
-        "<cmd>CloakToggle<cr>",
-      },
-    },
   },
 
   {
