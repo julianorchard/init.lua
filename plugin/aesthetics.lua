@@ -1,6 +1,12 @@
-local M = {}
+vim.pack.add({
+  { src = "https://github.com/j-hui/fidget.nvim", version = "v1.5.0" },
+  { src = "https://github.com/nullromo/go-up.nvim" },
+  { src = "https://github.com/fei6409/log-highlight.nvim" },
+  { src = "https://github.com/vague2k/vague.nvim" },
+  { src = "https://github.com/folke/snacks.nvim" },
+})
 
-function M.setup()
+if not package.loaded["fidget"] then
   require("fidget").setup({
     progress = {
       display = {
@@ -54,13 +60,19 @@ function M.setup()
   })
 end
 
-function M.test()
-  vim.notify("testing this notification")
-  vim.notify("testing dvhis notification")
-  vim.notify("tethis n")
+if not package.loaded["snacks"] then
+  require("snacks").setup({
+    -- Input QOL (my main reason for wanting this)
+    input = { enabled = true },
+    -- File related QOLs
+    bigfile = { enabled = true },
+    quickfile = { enabled = true },
+  })
 end
 
-M.setup()
-M.test()
+require("go-up").setup()
 
-return M
+require("vague").setup({
+  transparent = true,
+})
+vim.cmd.colorscheme("vague")
