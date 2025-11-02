@@ -36,30 +36,30 @@ git clone git@github.com:julianorchard/init.lua.git .
 Here's a list of plugins I use (generated with `./bin/docs-gen.vim`):
 
 <!--BEGIN_PLUGIN_LIST-->
-- [vim-surround](https://github.com/tpope/vim-surround) -test
-- [undotree](https://github.com/mbbill/undotree) -test
-- [vim-easy-align](https://github.com/junegunn/vim-easy-align) -test
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) -test
-- [mason.nvim](https://github.com/mason-org/mason.nvim) -test
-- [fidget.nvim](https://github.com/j-hui/fidget.nvim) -test
-- [go-up.nvim](https://github.com/nullromo/go-up.nvim) -test
-- [fzf-lua](https://github.com/ibhagwan/fzf-lua) -test
-- [oil.nvim](https://github.com/stevearc/oil.nvim) -test
-- [blink-emoji.nvim](https://github.com/moyiz/blink-emoji.nvim) -test
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) -test
-- [vim-fugitive](https://github.com/tpope/vim-fugitive) -test
-- [snacks.nvim](https://github.com/folke/snacks.nvim) -test
-- [blink.cmp](https://github.com/Saghen/blink.cmp) -test
-- [vim-wordmotion](https://github.com/chaoren/vim-wordmotion) -test
-- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) -test
-- [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) -test
-- [vim-visual-multi](https://github.com/mg979/vim-visual-multi) -test
-- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) -test
-- [cd-project.nvim](https://github.com/LintaoAmons/cd-project.nvim) -test
-- [conform.nvim](https://github.com/stevearc/conform.nvim) -test
-- [blink-ripgrep.nvim](https://github.com/mikavilpas/blink-ripgrep.nvim) -test
-- [vague.nvim](https://github.com/vague2k/vague.nvim) -test
-- [log-highlight.nvim](https://github.com/fei6409/log-highlight.nvim) -test
+- [vim-surround](https://github.com/tpope/vim-surround)
+- [undotree](https://github.com/mbbill/undotree)
+- [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [mason.nvim](https://github.com/mason-org/mason.nvim)
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim)
+- [go-up.nvim](https://github.com/nullromo/go-up.nvim)
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- [oil.nvim](https://github.com/stevearc/oil.nvim)
+- [blink-emoji.nvim](https://github.com/moyiz/blink-emoji.nvim)
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [snacks.nvim](https://github.com/folke/snacks.nvim)
+- [blink.cmp](https://github.com/Saghen/blink.cmp)
+- [vim-wordmotion](https://github.com/chaoren/vim-wordmotion)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim)
+- [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+- [cd-project.nvim](https://github.com/LintaoAmons/cd-project.nvim)
+- [conform.nvim](https://github.com/stevearc/conform.nvim)
+- [blink-ripgrep.nvim](https://github.com/mikavilpas/blink-ripgrep.nvim)
+- [vague.nvim](https://github.com/vague2k/vague.nvim)
+- [log-highlight.nvim](https://github.com/fei6409/log-highlight.nvim)
 <!--END_PLUGIN_LIST-->
 
 ## License
