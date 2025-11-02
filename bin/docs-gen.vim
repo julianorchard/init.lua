@@ -8,7 +8,7 @@ let g:readmeFilePath = '.github/README.md'
 
 
 function s:MarkdownLinkFormat(text, link) abort
-  return '- [' . a:text . '](' . a:link . ') -test'
+  return '- [' . a:text . '](' . a:link . ')'
 endfunction
 
 
