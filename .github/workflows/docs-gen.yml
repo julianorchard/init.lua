@@ -14,4 +14,4 @@ jobs:
       - uses: rhysd/action-setup-vim@v1.5.1
         with:
           neovim: true
-      - shell: ./bin/docs-gen.vim
+      - run: ./bin/docs-gen.vim
