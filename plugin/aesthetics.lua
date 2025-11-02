@@ -1,11 +1,3 @@
-vim.pack.add({
-  { src = "https://github.com/j-hui/fidget.nvim", version = "v1.5.0" },
-  { src = "https://github.com/nullromo/go-up.nvim" },
-  { src = "https://github.com/fei6409/log-highlight.nvim" },
-  { src = "https://github.com/vague2k/vague.nvim" },
-  { src = "https://github.com/folke/snacks.nvim" },
-})
-
 if not package.loaded["fidget"] then
   require("fidget").setup({
     progress = {

@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "SchemaStore.nvim": {
-      "rev": "3b0d7d7",
+      "rev": "09bc713",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink-emoji.nvim": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/moyiz/blink-emoji.nvim"
     },
     "blink-ripgrep.nvim": {
-      "rev": "e6705fc",
+      "rev": "644e5e6",
       "src": "https://github.com/mikavilpas/blink-ripgrep.nvim"
     },
     "blink.cmp": {
@@ -54,37 +54,17 @@
       "rev": "cac07cf",
       "src": "https://github.com/fei6409/log-highlight.nvim"
     },
-    "mason-lspconfig.nvim": {
-      "rev": "3590d66",
-      "src": "https://github.com/mason-org/mason-lspconfig.nvim"
-    },
-    "mason-tool-installer.nvim": {
-      "rev": "517ef59",
-      "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
-    },
     "mason.nvim": {
       "rev": "ad7146a",
       "src": "https://github.com/mason-org/mason.nvim"
-    },
-    "nvim-lspconfig": {
-      "rev": "87d3018",
-      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "oil.nvim": {
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
     },
-    "powershell.nvim": {
-      "rev": "f7a45f9",
-      "src": "https://github.com/TheLeoP/powershell.nvim"
-    },
     "snacks.nvim": {
-      "rev": "6ca5417",
+      "rev": "6f60105",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "telescope.nvim": {
-      "rev": "b4da76b",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "undotree": {
       "rev": "0f1c981",
@@ -101,10 +81,6 @@
     "vim-fugitive": {
       "rev": "61b51c0",
       "src": "https://github.com/tpope/vim-fugitive"
-    },
-    "vim-go": {
-      "rev": "06ac993",
-      "src": "https://github.com/fatih/vim-go"
     },
     "vim-surround": {
       "rev": "3d188ed",

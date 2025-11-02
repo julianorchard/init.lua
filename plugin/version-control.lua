@@ -1,8 +1,3 @@
-vim.pack.add({
-  { src = "https://github.com/lewis6991/gitsigns.nvim" },
-  { src = "https://github.com/tpope/vim-fugitive" },
-})
-
 local function fugimap(a, b, c)
   local cmd = string.format([[ <cmd>Git %s<cr> ]], c)
   vim.keymap.set(a, b, cmd, {

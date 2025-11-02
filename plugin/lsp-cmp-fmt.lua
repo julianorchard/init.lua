@@ -1,25 +1,29 @@
-vim.pack.add({
-  { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
-  { src = "https://github.com/stevearc/conform.nvim" },
-  { src = "https://github.com/b0o/SchemaStore.nvim" },
-
-  "https://github.com/rafamadriz/friendly-snippets",
-  "https://github.com/moyiz/blink-emoji.nvim",
-  "https://github.com/mikavilpas/blink-ripgrep.nvim",
-  "https://github.com/L3MON4D3/LuaSnip",
-  { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("^1") },
-})
-
 require("mason").setup()
-require("mason-tool-installer").setup({
-  ensure_installed = {
-    "gopls",
-    "lua-language-server",
-    "stylua",
-    "terraform-ls",
-  },
-})
+local registry = require("mason-registry")
+local wanted = {
+  "bash-language-server",
+  "black",
+  "gopls",
+  "jsonnet-language-server",
+  "jsonnetfmt",
+  "lua-language-server",
+  "prettier",
+  "pyright",
+  "shfmt",
+  "stylua",
+  "terraform-ls",
+  "yamlfix",
+}
+for _, name in ipairs(wanted) do
+  local ok, pkg = pcall(registry.get_package, name)
+  if ok then
+    if not pkg:is_installed() then
+      pkg:install()
+    end
+  else
+    vim.notify("Mason package not found: " .. name, vim.log.levels.WARN)
+  end
+end
 
 -- Reads all the files in the ~/.config/nvim/lsp directory to retrieve names for
 -- vim.lsp.enable!
@@ -152,3 +156,20 @@ vim.keymap.set("n", "<leader>fm", function()
     vim.notify("Turning autoformatting off")
   end
 end)
+
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  bang = true,
+})
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = "Re-enable autoformat-on-save",
+})

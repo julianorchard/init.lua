@@ -1,9 +1,3 @@
-vim.pack.add({
-  { src = "https://github.com/ibhagwan/fzf-lua" },
-  { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/LintaoAmons/cd-project.nvim" },
-})
-
 -- Oil
 require("oil").setup({
   default_file_explorer = true,
