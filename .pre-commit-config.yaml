@@ -21,4 +21,4 @@ repos:
     rev: v0.4a3
     hooks:
       - id: vint
-exclude: ^\.svg$|\.drawio$|templates
+exclude: ^\.svg$|\.drawio$|templates|^nvim-pack-lock.json$
