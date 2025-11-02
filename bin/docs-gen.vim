@@ -8,7 +8,7 @@ let g:readmeFilePath = '.github/README.md'
 
 
 function s:MarkdownLinkFormat(text, link) abort
-  return '- [' . a:text . '](' . a:link . ')\n'
+  return '- [' . a:text . '](' . a:link . ')'
 endfunction
 
 
@@ -64,7 +64,7 @@ function s:ReplaceReadmeContents(newMarkdown) abort
     echom 'Plugin marker list markers not found in ' . g:readmeFilePath
   endif
 
-  call writefile(l:newLines, l:file)
+  call writefile(l:newLines, l:file, 'S')
 endfunction
 
 
