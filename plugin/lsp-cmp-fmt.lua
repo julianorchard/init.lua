@@ -129,23 +129,23 @@ c.setup({
     end
     return { timeout_ms = 500, lsp_fallback = true }
   end,
-})
 
-c.formatters.shfmt = {
-  prepend_args = { "-i", "4" },
-}
-
-c.formatters.yamlfix = {
-  env = {
-    YAMLFIX_WHITELINES = "1",
-    YAMLFIX_COMMENTS_WHITELINES = "1",
-    YAMLFIX_LINE_LENGTH = "200",
+  formatters = {
+    shfmt = {
+      prepend_args = { "-i", "4" },
+    },
+    yamlfix = {
+      env = {
+        YAMLFIX_WHITELINES = "1",
+        YAMLFIX_COMMENTS_WHITELINES = "1",
+        YAMLFIX_LINE_LENGTH = "200",
+      },
+    },
+    jsonnetfmt = {
+      prepend_args = { "-n", "2" },
+    },
   },
-}
-
-c.formatters.jsonnetfmt = {
-  prepend_args = { "-n", "2" },
-}
+})
 
 vim.keymap.set("n", "<leader>fm", function()
   if vim.g.disable_autoformat then
