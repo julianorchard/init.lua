@@ -1,32 +1,21 @@
 local function setup_autocmd()
   -- Remove blank line endings on save
   vim.api.nvim_create_autocmd("BufWritePre", {
-    -- group = vim.api.nvim_create_augroup("return-cursor", { clear = false }),
-    desc = "Return the cursor to the previous position in the file",
+    group = vim.api.nvim_create_augroup("RemoveBlankLineEndings", { clear = true }),
+    desc = "Remove blank line endings on save",
     command = [[ :%s/\s\+$//ge ]],
   })
 
   -- Return-cursor
   vim.api.nvim_create_autocmd("BufReadPost", {
-    group = vim.api.nvim_create_augroup("return-cursor", { clear = true }),
+    group = vim.api.nvim_create_augroup("ReturnCursor", { clear = true }),
     desc = "Return the cursor to the previous position in the file",
     command = [[ if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]],
   })
 
-  -- Terminal
-  vim.api.nvim_create_autocmd("TermOpen", {
-    group = vim.api.nvim_create_augroup("terminal", { clear = true }),
-    desc = "Hook into terminal opening",
-    command = [[
-      :startinsert
-      :setlocal nonumber norelativenumber
-    ]],
-  })
-
   -- Stolen from @mfussenegger (GitHub) dotfiles
-  -- if helpers_available then
   vim.api.nvim_create_autocmd("BufNewFile", {
-    group = vim.api.nvim_create_augroup("templates", { clear = true }),
+    group = vim.api.nvim_create_augroup("TemplateFile", { clear = true }),
     desc = "Load template file",
     callback = function(args)
       local home = os.getenv("HOME")
@@ -43,12 +32,11 @@ local function setup_autocmd()
       end
     end,
   })
-  -- end
 
   -- @dfsully (Reddit) - this works incredibly with the above
   -- https://www.reddit.com/r/neovim/comments/16wvklu/comment/k306c5c/
   vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("executable", { clear = true }),
+    group = vim.api.nvim_create_augroup("MakeFilesExecutable", { clear = true }),
     desc = "Mark script files with shebangs as executable on write",
     callback = function()
       local shebang = vim.api.nvim_buf_get_lines(0, 0, 1, true)[1]
@@ -69,25 +57,19 @@ local function setup_autocmd()
     end,
   })
 
-  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    group = vim.api.nvim_create_augroup("tfstate-to-json", { clear = true }),
-    desc = "Recognise .tfstate files JSON",
-    pattern = { "*.tfstate" },
-    command = [[ :set filetype=json]],
-  })
-
   -- Highlight on yank (very cool)
-  local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
   vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
     callback = function()
       vim.highlight.on_yank()
     end,
-    group = highlight_group,
     pattern = "*",
   })
 
   -- Show cursor line only in active window (stolen from @folke)
+  local cursor_group = vim.api.nvim_create_augroup("CursorLine", { clear = true })
   vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+    group = cursor_group,
     callback = function()
       if vim.w.auto_cursorline then
         vim.wo.cursorline = true
@@ -97,6 +79,7 @@ local function setup_autocmd()
     end,
   })
   vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+    group = cursor_group,
     callback = function()
       if vim.wo.cursorline then
         vim.w.auto_cursorline = true

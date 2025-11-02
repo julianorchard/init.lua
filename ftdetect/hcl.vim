@@ -1,3 +1,2 @@
-augroup hcl
-  au BufRead,BufNewFile *.hcl setfiletype terraform
-augroup END
+" vint: -ProhibitAutocmdWithNoGroup
+au BufRead,BufNewFile *.hcl setfiletype terraform

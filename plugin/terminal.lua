@@ -41,7 +41,7 @@ end
 function Term.run_cmd(cmd)
   local term_opts = { term = true }
   if cmd == nil then
-    vim.api.nvim_err_writeln("Couldn't run Term.cmd_run, no 'cmd' argument provided")
+    vim.notify("Couldn't run Term.cmd_run, no 'cmd' argument provided", vim.log.levels.ERROR)
     return nil
   end
 
@@ -113,14 +113,35 @@ function Term.setup()
   --   Term.tmux_navigator_mapping("Right")
   -- end)
 
-  vim.api.nvim_create_augroup("TerminalAutoInsert", { clear = true })
-  vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    group = "TerminalAutoInsert",
+  vim.api.nvim_create_autocmd("TermClose", {
+    desc = "Terminal close https://stackoverflow.com/questions/68605360",
+    group = vim.api.nvim_create_augroup("TerminalClose", { clear = true }),
+    callback = function()
+      vim.cmd("bdelete")
+    end,
+  })
+  vim.api.nvim_create_autocmd("TermOpen", {
+    group = vim.api.nvim_create_augroup("TerminalOpen", { clear = true }),
+    desc = "Hook into terminal opening",
+    command = [[
+      startinsert      " start in insert mode (see also TerminalAutoInsert augroup)
+      setl nonu nornu  " disable line numbers
+      setl ls=0        " disable statusline
+    ]],
+  })
+  -- NOTE: This is for when switching back to the terminal buffer - the previous
+  --       autocmd is for when the buffer is opening for the first time!
+  --       They could probably be consolidated but I think this is fine...
+  vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Auto-start insert mode when entering terminal BUFFER",
+    group = vim.api.nvim_create_augroup("TerminalAutoInsert", { clear = true }),
     pattern = "term://*",
     callback = function()
-      vim.cmd("startinsert")
+      vim.cmd([[
+      startinsert " start in insert mode (see also TerminalAutoInsert augroup)
+      setl ls=0   " disable statusline
+    ]])
     end,
-    desc = "Auto-start insert mode when entering terminal buffer",
   })
 
   vim.keymap.set("n", "<leader>tt", function()

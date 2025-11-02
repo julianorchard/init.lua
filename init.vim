@@ -52,7 +52,7 @@ no <leader>a\| :EasyAlign<CR>
 
 nn <leader><F5> :UndotreeToggle<CR>
 
-let g:tmux_navigator_no_mappings = 0
+let g:tmux_navigator_no_mappings = 1
 nn <C-a>h :TmuxNavigateLeft<CR>
 nn <C-a>j :TmuxNavigateDown<CR>
 nn <C-a>k :TmuxNavigateUp<CR>
