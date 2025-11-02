@@ -2,16 +2,20 @@
 name: docs-gen
 
 on:
-  pull_request:
   push:
     branches: [main]
 
 jobs:
-  pre-commit:
+  docs-gen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: rhysd/action-setup-vim@v1.5.1
         with:
           neovim: true
-      - shell: ./bin/docs-gen.vim
+      - run: ./bin/docs-gen.vim
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          add: .
+          message: 'docs: auto-update README'
