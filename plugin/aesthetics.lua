@@ -1,0 +1,78 @@
+vim.pack.add({
+  { src = "https://github.com/j-hui/fidget.nvim", version = "v1.5.0" },
+  { src = "https://github.com/nullromo/go-up.nvim" },
+  { src = "https://github.com/fei6409/log-highlight.nvim" },
+  { src = "https://github.com/vague2k/vague.nvim" },
+  { src = "https://github.com/folke/snacks.nvim" },
+})
+
+if not package.loaded["fidget"] then
+  require("fidget").setup({
+    progress = {
+      display = {
+        done_icon = "DONE",
+        format_group_name = function(group)
+          return tostring("LSP " .. group)
+        end,
+        progress_icon = {
+          -- NOTE: This was also not well documented: someone was not answered
+          --       in the GitHub Issues about it and it had been asked before:
+          pattern = { "foo", "bar", "baz", "qux", "quux", "quuux" },
+          -- pattern = "line",
+          period = 1,
+        },
+      },
+    },
+    notification = {
+      -- This took me fucking forever to figure out...
+      configs = {
+        default = vim.tbl_extend("force", require("fidget.notification").default_config, {
+          name = "NOTIFICATION",
+          icon = "<",
+          ttl = 7,
+        }),
+      },
+      -- ^^
+      -- Maybe open an issue about this in the GitHub Issues because damn; this
+      -- was a little burried and is basically extremely useful
+      filter = vim.log.levels.INFO,
+      history_size = 128,
+      override_vim_notify = true,
+      view = {
+        stack_upwards = false,
+        icon_separator = " ",
+        group_separator = "--",
+        group_separator_hl = "Comment",
+        render_message = function(msg, cnt)
+          return cnt == 1 and msg or string.format("(%dx) %s", cnt, msg)
+        end,
+      },
+      window = {
+        border = "rounded",
+        zindex = 45,
+        max_width = 0,
+        max_height = 0,
+        x_padding = 0,
+        y_padding = 0,
+        align = "top",
+      },
+    },
+  })
+end
+
+if not package.loaded["snacks"] then
+  require("snacks").setup({
+    -- Input QOL (my main reason for wanting this)
+    input = { enabled = true },
+    -- File related QOLs
+    bigfile = { enabled = true },
+    quickfile = { enabled = true },
+  })
+end
+
+require("go-up").setup()
+
+require("vague").setup({
+  transparent = true,
+})
+vim.cmd.colorscheme("vague")
