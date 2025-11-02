@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: All
+  hosts: localhost
+  gather_facts: true
+  become: true
+  roles:
+    - role: neovim
+      tags: [neovim]
+# vi: ft=yaml.ansible

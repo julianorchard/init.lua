@@ -1,0 +1,17 @@
+---
+name: docs-gen
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: rhysd/action-setup-vim@v1.5.1
+        with:
+          neovim: true
+      - script: ./bin/docs-gen.vim
