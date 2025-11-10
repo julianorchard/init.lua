@@ -25,6 +25,10 @@
       "rev": "a1421a5",
       "src": "https://github.com/LintaoAmons/cd-project.nvim"
     },
+    "citruszest.nvim": {
+      "rev": "ce6749e",
+      "src": "https://github.com/zootedb0t/citruszest.nvim"
+    },
     "conform.nvim": {
       "rev": "9fd3d5e",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -81,6 +85,10 @@
     "vim-fugitive": {
       "rev": "61b51c0",
       "src": "https://github.com/tpope/vim-fugitive"
+    },
+    "vim-peekaboo": {
+      "rev": "2a8a318",
+      "src": "https://github.com/junegunn/vim-peekaboo"
     },
     "vim-surround": {
       "rev": "3d188ed",

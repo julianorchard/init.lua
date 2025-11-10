@@ -3,6 +3,7 @@ local registry = require("mason-registry")
 local wanted = {
   "bash-language-server",
   "black",
+  "gofumpt",
   "gopls",
   "jsonnet-language-server",
   "jsonnetfmt",
@@ -113,6 +114,7 @@ local c = require("conform")
 c.setup({
   formatters_by_ft = {
     bash = { "shfmt" },
+    go = { "gofumpt" },
     json = { "jq" },
     jsonnet = { "jsonnetfmt" },
     lua = { "stylua" },

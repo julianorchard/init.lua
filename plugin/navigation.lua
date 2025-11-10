@@ -55,29 +55,7 @@ require("cd-project").setup({
 })
 vim.keymap.set("n", "<leader>cd", vim.cmd.CdProject)
 
-local f = require("fzf-lua")
-f.setup({
-  -- Ivy-style layout
-  winopts = {
-    width = 1.0,
-    height = 0.45,
-    row = 1.0,
-    col = 0.5,
-    border = "none",
-    preview = {
-      hidden = "nohidden",
-      layout = "horizontal",
-      flip_columns = 160,
-    },
-  },
-  keymap = {
-    fzf = {
-      -- Use <c-q> to select all items and add them to the quickfix list
-      true,
-      ["ctrl-q"] = "select-all+accept",
-    },
-  },
-})
+local f = require("snacks.picker")
 vim.keymap.set("n", "<leader><leader>", function()
   local bufs = vim.fn.getbufinfo({ buflisted = 1 })
   if #bufs > 2 then
@@ -90,5 +68,8 @@ vim.keymap.set("n", "<leader>ff", function()
   f.files()
 end)
 vim.keymap.set("n", "<leader>fg", function()
-  f.live_grep()
+  f.grep()
+end)
+vim.keymap.set("n", "<leader>fh", function()
+  f.command_history()
 end)

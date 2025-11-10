@@ -1,3 +1,24 @@
+local colourscheme = "citruszest"
+
+local colour_config = {}
+
+if colourscheme == "citruszest" then
+  colour_config = {
+    option = {
+      transparent = true,
+    },
+  }
+end
+
+if colourscheme == "vague" then
+  colour_config = {
+    transparent = true,
+  }
+end
+
+require(colourscheme).setup(colour_config)
+vim.cmd.colorscheme(colourscheme)
+
 if not package.loaded["fidget"] then
   require("fidget").setup({
     progress = {
@@ -59,12 +80,19 @@ if not package.loaded["snacks"] then
     -- File related QOLs
     bigfile = { enabled = true },
     quickfile = { enabled = true },
+
+    -- Picker
+    picker = {
+      layout = {
+        preset = "ivy",
+      },
+      icons = {
+        files = {
+          enabled = false,
+        },
+      },
+    },
   })
 end
 
 require("go-up").setup()
-
-require("vague").setup({
-  transparent = true,
-})
-vim.cmd.colorscheme("vague")
