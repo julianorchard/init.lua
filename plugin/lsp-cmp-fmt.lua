@@ -113,8 +113,14 @@ require("blink.cmp").setup({
 local c = require("conform")
 c.setup({
   formatters_by_ft = {
+    go = function()
+      if vim.g.disable_golines then
+        return { "gofumpt" }
+      end
+      return { "golines", "gofumpt" }
+    end,
+
     bash = { "shfmt" },
-    go = { "gofumpt" },
     json = { "jq" },
     jsonnet = { "jsonnetfmt" },
     lua = { "stylua" },
@@ -146,6 +152,9 @@ c.setup({
     jsonnetfmt = {
       prepend_args = { "-n", "2" },
     },
+    golines = {
+      args = { "-m", "80" },
+    },
   },
 })
 
@@ -175,3 +184,32 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
+
+-- toggle golines
+vim.g.disable_golines = false
+
+local toggle_golines_cmd = "ToggleGolines"
+vim.api.nvim_create_user_command(toggle_golines_cmd, function()
+  vim.g.disable_golines = not vim.g.disable_golines
+  vim.notify(vim.g.disable_golines and "Turning golines off" or "Turning golines on")
+end, {
+  desc = "Toggle the golines formatter",
+})
+vim.keymap.set("n", "<leader>fl", "<cmd>" .. toggle_golines_cmd .. "<cr>")
+
+--[[
+
+  Okay this is good fun
+
+  Basically we can use `golines` to format a specific function only if we add a
+  junk `package` to make the selection a "valid" go file... this has the
+  unitended side-effect with something like `gofumpt` to also give you a nice
+  `import()` block automatically... so we need to `sed` that out too... but it
+  does work!
+
+  :'<,'>!sed '1s/^/package p\n\n/' | golines -m 100 | sed '/^import (/,/^)/d' | sed '1,3d'
+
+  TODO(maybe): Implement this with treesitter's understanding of functions to
+               make it actually (not actually) useful
+
+--]]
