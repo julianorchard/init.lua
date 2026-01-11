@@ -4,6 +4,7 @@ local wanted = {
   "bash-language-server",
   "black",
   "gofumpt",
+  "golines",
   "gopls",
   "jsonnet-language-server",
   "jsonnetfmt",
@@ -35,6 +36,59 @@ end, vim.fn.readdir(vim.fn.stdpath("config") .. "/lsp")))
 -- require("powershell").setup({
 --   bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
 -- })
+
+-- SHOUTOUT @PBOOTLY 🙌
+vim.keymap.set("n", "<leader>e", function()
+  vim.diagnostic.open_float(nil, {
+    focusable = false,
+    border = "rounded",
+  })
+end)
+
+vim.keymap.set("n", "]", function()
+  vim.diagnostic.jump({ count = 1 })
+end)
+
+vim.keymap.set("n", "[", function()
+  vim.diagnostic.jump({ count = -1 })
+end)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local opts = { buffer = ev.buf, nowait = true }
+
+    if client == nil then
+      return
+    end
+
+    if client:supports_method("textDocument/definition") then
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    end
+
+    if client:supports_method("textDocument/references") then
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    end
+
+    if client:supports_method("textDocument/implementation") then
+      vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+    end
+
+    if client:supports_method("textDocument/typeDefinition") then
+      vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+    end
+
+    if client:supports_method("textDocument/declaration") then
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    end
+
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+    if client:supports_method("textDocument/signatureHelp") then
+      vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
+    end
+  end,
+})
 
 local signs = {
   Error = "失",

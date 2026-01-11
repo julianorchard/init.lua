@@ -17,14 +17,14 @@ lua << EOF
     "https://github.com/mg979/vim-visual-multi",
     "https://github.com/tpope/vim-surround",
     "https://github.com/christoomey/vim-tmux-navigator",
-    "https://github.com/junegunn/vim-peekaboo",
 
     -- aesthetics
     { src = "https://github.com/j-hui/fidget.nvim", version = "v1.5.0" },
     { src = "https://github.com/nullromo/go-up.nvim" },
     { src = "https://github.com/fei6409/log-highlight.nvim" },
     { src = "https://github.com/folke/snacks.nvim" },
-    "https://github.com/zootedb0t/citruszest.nvim",
+    "https://github.com/junegunn/seoul256.vim",
+    -- "https://github.com/zootedb0t/citruszest.nvim",
     -- "https://github.com/vague2k/vague.nvim",
 
     -- lsp/completion/formatting
@@ -61,4 +61,4 @@ nn <C-a>k :TmuxNavigateUp<CR>
 nn <C-a>l :TmuxNavigateRight<CR>
 
 " Get the vim hightlighting under the cursor
-nnoremap <leader>hi :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>
+nn <leader>hi :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>

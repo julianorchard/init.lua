@@ -1,4 +1,4 @@
-local colourscheme = "citruszest"
+local colourscheme = "seoul256-light"
 
 local colour_config = {}
 
@@ -8,6 +8,8 @@ if colourscheme == "citruszest" then
       transparent = true,
     },
   }
+  -- THANK YOU @PBOOTLY (AGAIN) 🙌 🙌
+  vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#3a3a3a" })
 end
 
 if colourscheme == "vague" then
@@ -16,7 +18,10 @@ if colourscheme == "vague" then
   }
 end
 
-require(colourscheme).setup(colour_config)
+local ok, scheme = pcall(require, colourscheme)
+if ok then
+  scheme.setup(colour_config)
+end
 vim.cmd.colorscheme(colourscheme)
 
 if not package.loaded["fidget"] then

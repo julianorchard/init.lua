@@ -66,6 +66,10 @@
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "seoul256.vim": {
+      "rev": "d9a91d8",
+      "src": "https://github.com/junegunn/seoul256.vim"
+    },
     "snacks.nvim": {
       "rev": "6f60105",
       "src": "https://github.com/folke/snacks.nvim"

@@ -52,24 +52,13 @@ local function setup_remap()
 
   h.map("v", "<leader>ea", [[ <CMD>EasyAlign<CR> ]])
 
-  -- noremap <expr> <LocalLeader>e ':e ' . expand("%:h") . '/'
-  h.map("n", "<leader>ee", ":e ")
-
-  -- Abbreviations
-  vim.cmd([[
-  " Signs
-  let gcfg = "git config "
-  iab @@ hello@julianorchard.co.uk
-  iab <expr> ~g substitute(system(gcfg . 'user.name') . " <" . system(gcfg . 'user.email') . ">", '\n', '', 'g')
-]])
-
   -- Source current file
   h.map("n", "<leader>x", "<cmd>.lua<CR>")
   h.map("n", "<leader><leader>x", "<cmd>source %<CR>")
 
   -- Insert and normal mode are slightly different here
-  h.map("i", "<C-t>", "<space><esc>:lua require('helpers.function').fill()<cr>")
-  h.map("n", "<C-t>", "a<space><esc>:lua require('helpers.function').fill()<cr>")
+  h.map("i", "<C-t>", "<space><esc>:lua require('helpers.functions').fill()<cr>")
+  h.map("n", "<C-t>", "a<space><esc>:lua require('helpers.functions').fill()<cr>")
 
   -- Insert timestamp <C-s>
   local tstamp = vim.fn.strftime("%Y-%m-%d %H:%M")

@@ -49,14 +49,17 @@ end
 ---`:lua M.fill("+")` == this -> +++++++++++++++++++++++++++++++++++++++++++++++
 ---@param character? string The character to insert until the colour column
 function M.fill(character)
-  local cc = vim.api.nvim_win_get_option(0, "cc") - #vim.fn.getline(".")
-  local line_length = vim.split(cc, ",")[1]
-  if line_length > 2 then
-    -- Default to '-' (dash) character if no input is provided
-    M.insert_at_point(string.rep((character and character or "-"), line_length))
-  else
-    print("ERROR: Cannot fill at this point.")
-  end
+  print("test")
+  -- local cc = vim.api.nvim_win_get_option(0, "cc") - #vim.fn.getline(".")
+  -- local line_length = #vim.split(cc, ",")[1]
+  -- print(line_length)
+
+  -- if line_length > 2 then
+  --   -- Default to '-' (dash) character if no input is provided
+  --   M.insert_at_point(string.rep((character and character or "-"), line_length))
+  -- else
+  --   print("ERROR: Cannot fill at this point.")
+  -- end
 end
 
 ---Wrapper around keymap with silent and noremap
