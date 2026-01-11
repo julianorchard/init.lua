@@ -55,6 +55,7 @@ Here's a list of plugins I use (generated with `./bin/docs-gen.vim`):
 - [vim-wordmotion](https://github.com/chaoren/vim-wordmotion)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim)
+- [seoul256.vim](https://github.com/junegunn/seoul256.vim)
 - [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 - [cd-project.nvim](https://github.com/LintaoAmons/cd-project.nvim)
