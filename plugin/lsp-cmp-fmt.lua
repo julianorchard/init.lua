@@ -9,6 +9,7 @@ local wanted = {
   "jsonnet-language-server",
   "jsonnetfmt",
   "lua-language-server",
+  "mpls",
   "prettier",
   "pyright",
   "shfmt",
